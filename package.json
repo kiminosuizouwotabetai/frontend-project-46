@@ -15,6 +15,9 @@
   },
   "keywords": [],
   "author": "",
+  "dependencies": {
+    "commander": "^12.1.0"
+  },
   "license": "ISC",
   "type": "module",
   "bugs": {
