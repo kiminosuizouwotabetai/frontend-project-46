@@ -33,8 +33,8 @@ function buildDiff(data1, data2) {
 
   return `{\n${diffLines.join('\n')}\n}`;
 }
-
-export default function genDiff(filepath1, filepath2, format = 'stylish') {
+// eslint-disable-next-line no-unused-vars
+export default function genDiff(filepath1, filepath2, _format = 'stylish') {
   const data1 = readAndParseFile(filepath1);
   const data2 = readAndParseFile(filepath2);
 
