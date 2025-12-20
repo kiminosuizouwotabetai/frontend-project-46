@@ -1,10 +1,11 @@
 {
   "name": "@hexlet/code",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "[![Actions Status](https://github.com/kiminosuizouwotabetai/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/kiminosuizouwotabetai/frontend-project-46/actions)",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,13 @@
   "bugs": {
     "url": "https://github.com/kiminosuizouwotabetai/frontend-project-46/issues"
   },
-  "homepage": "https://github.com/kiminosuizouwotabetai/frontend-project-46#readme"
+  "homepage": "https://github.com/kiminosuizouwotabetai/frontend-project-46#readme",
+  "devDependencies": {
+    "@jest/globals": "^30.2.0",
+    "cross-env": "^10.1.0",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.32.0",
+    "jest": "^30.2.0"
+  }
 }
