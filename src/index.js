@@ -1,10 +1,44 @@
 import readAndParseFile from './fileReader.js';
+import _ from 'lodash';
+
+function buildDiff(data1, data2) {
+  const allKeys = _.union(Object.keys(data1), Object.keys(data2));
+  
+  const sortedKeys = _.sortBy(allKeys);
+  
+  const diffLines = sortedKeys.flatMap((key) => {
+    const hasInData1 = Object.hasOwn(data1, key);
+    const hasInData2 = Object.hasOwn(data2, key);
+    
+    if (hasInData1 && !hasInData2) {
+      return `  - ${key}: ${data1[key]}`;
+    }
+    
+    if (!hasInData1 && hasInData2) {
+      return `  + ${key}: ${data2[key]}`;
+    }
+    
+    const value1 = data1[key];
+    const value2 = data2[key];
+    
+    if (value1 === value2) {
+      return `    ${key}: ${value1}`;
+    }
+    
+    return [
+      `  - ${key}: ${value1}`,
+      `  + ${key}: ${value2}`,
+    ];
+  });
+  
+  return `{\n${diffLines.join('\n')}\n}`;
+}
 
 export default function genDiff(filepath1, filepath2, format = 'stylish') {
   const data1 = readAndParseFile(filepath1);
   const data2 = readAndParseFile(filepath2);
-  console.log('Данные из file1:', data1);
-  console.log('Данные из file2:', data2);
-
-  return 'ПОБЕДА!!!!';
+  
+  const diff = buildDiff(data1, data2);
+  
+  return diff;
 }
