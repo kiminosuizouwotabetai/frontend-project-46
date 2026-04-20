@@ -1,19 +1,15 @@
 import yaml from 'js-yaml';
 
-const parseJSON = (content) => JSON.parse(content);
-
-const parseYAML = (content) => yaml.load(content);
-
-const parse = (content, format) => {
-  switch (format) {
-    case 'json':
-      return parseJSON(content);
-    case 'yml':
-    case 'yaml':
-      return parseYAML(content);
+const fileToParse = (file, extname) => {
+  switch (extname) {
+    case '.json':
+      return JSON.parse(file);
+    case '.yml':
+      return yaml.load(file, 'utf8');
+    case '.yaml':
+      return yaml.load(file, 'utf8');
     default:
-      throw new Error(`Неподдерживаемый формат: ${format}`);
+      throw new Error(`Unknown extension - ${extname}`);
   }
 };
-
-export default parse;
+export default fileToParse;

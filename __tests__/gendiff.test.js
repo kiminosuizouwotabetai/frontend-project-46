@@ -1,40 +1,31 @@
 import { test, expect } from '@jest/globals';
-import { fileURLToPath } from 'url';
 import path from 'path';
-import { readFileSync } from 'fs';
-import genDiff from '../src/index.js';
+import { fileURLToPath } from 'url';
+import fs from 'fs';
+import gendiff from '../index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
-const readFile = (filename) => readFileSync(getFixturePath(filename), 'utf-8');
+const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', `${filename}`);
 
-const normalizeLineEndings = (str) => str.trim().replace(/\r\n/g, '\n');
+const stylishResult = fs.readFileSync(getFixturePath('expected.txt'), 'utf8');
+const plainResult = fs.readFileSync(getFixturePath('expectedPlain.txt'), 'utf8');
+const jsonResult = fs.readFileSync(getFixturePath('expectedJSON.txt'), 'utf8');
 
-test('genDiff compares two flat JSON files', () => {
-  const filepath1 = getFixturePath('file1.json');
-  const filepath2 = getFixturePath('file2.json');
-  const expected = readFile('expected.txt');
-  const result = genDiff(filepath1, filepath2);
+const extensions = ['json', 'yml', 'yaml'];
 
-  expect(normalizeLineEndings(result)).toBe(normalizeLineEndings(expected));
-});
+test.each(extensions)('compare files and test different formatters (%s)', (ext) => {
+  const fileBefore = getFixturePath(`file1.${ext}`);
+  const fileAfter = getFixturePath(`file2.${ext}`);
 
-test('genDiff compares two flat YAML files', () => {
-  const filepath1 = getFixturePath('file1.yml');
-  const filepath2 = getFixturePath('file2.yml');
-  const expected = readFile('expected.txt');
-  const result = genDiff(filepath1, filepath2);
+  const stylishDifference = gendiff(fileBefore, fileAfter, 'stylish');
+  const plainDifference = gendiff(fileBefore, fileAfter, 'plain');
+  const jsonDifference = gendiff(fileBefore, fileAfter, 'json');
+  const noFormatDifference = gendiff(fileBefore, fileAfter);
 
-  expect(normalizeLineEndings(result)).toBe(normalizeLineEndings(expected));
-});
-
-test('genDiff compares JSON and YAML files', () => {
-  const filepath1 = getFixturePath('file1.json');
-  const filepath2 = getFixturePath('file2.yml');
-  const expected = readFile('expected.txt');
-  const result = genDiff(filepath1, filepath2);
-
-  expect(normalizeLineEndings(result)).toBe(normalizeLineEndings(expected));
+  expect(stylishDifference).toEqual(stylishResult);
+  expect(plainDifference).toEqual(plainResult);
+  expect(jsonDifference).toEqual(jsonResult);
+  expect(noFormatDifference).toEqual(stylishResult);
 });
