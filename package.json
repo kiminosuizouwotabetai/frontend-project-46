@@ -2,8 +2,8 @@
   "name": "@hexlet/code",
   "version": "1.0.1",
   "description": "[![Actions Status](https://github.com/kiminosuizouwotabetai/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/kiminosuizouwotabetai/frontend-project-46/actions)",
-  "main": "./src/index.js",
-  "exports": "./src/index.js",
+  "main": "./index.js",
+  "exports": "./index.js",
   "scripts": {
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest",
     "lint": "eslint ."
