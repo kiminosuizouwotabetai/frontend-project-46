@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.1",
   "description": "[![Actions Status](https://github.com/kiminosuizouwotabetai/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/kiminosuizouwotabetai/frontend-project-46/actions)",
-  "main": "src/index.js",
+  "main": "./src/index.js",
   "scripts": {
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest",
     "lint": "eslint ."
@@ -34,12 +34,5 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.32.0",
     "jest": "^30.2.0"
-  },
-  "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
   }
-
 }
