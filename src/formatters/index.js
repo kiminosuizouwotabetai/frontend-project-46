@@ -6,11 +6,11 @@ const formatters = {
   plain,
 };
 
-const getFormatter = (formatName) => {
+const chooseFormatter = (ast, formatName = 'stylish') => {
   if (!formatters[formatName]) {
     throw new Error(`Unknown format: ${formatName}. Available formats: stylish, plain`);
   }
-  return formatters[formatName];
+  return formatters[formatName](ast);
 };
 
-export default getFormatter;
+export default chooseFormatter;
