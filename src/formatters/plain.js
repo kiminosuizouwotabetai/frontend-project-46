@@ -1,4 +1,4 @@
-const formatValue = (data) => {
+const formatValue = data => {
   if (typeof data === 'object' && data !== null) {
     return '[complex value]'
   }
