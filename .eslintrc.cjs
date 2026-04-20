@@ -16,7 +16,7 @@ module.exports = {
     'no-console': 'off',
     'no-underscore-dangle': 'off',
     'import/prefer-default-export': 'off',
-    semi: ['error', 'never'],
-    'arrow-parens': ['error', 'as-needed'],
+    'semi': ['error', 'never'],
+    'arrow-parens': ['error', 'always'],
   },
-}
+};
