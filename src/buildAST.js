@@ -3,7 +3,7 @@ import _ from 'lodash'
 const buildAST = (file1, file2) => {
   const keys = _.sortBy(_.unionBy(_.keys(file1), _.keys(file2)))
 
-  return keys.map((key) => {
+  return keys.map(key => {
     const value1 = file1[key]
     const value2 = file2[key]
     if (!_.has(file2, key)) {

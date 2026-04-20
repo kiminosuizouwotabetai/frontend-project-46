@@ -7,7 +7,7 @@ import gendiff from '../index.js'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', `${filename}`)
+const getFixturePath = filename => path.join(__dirname, '..', '__fixtures__', `${filename}`)
 
 const stylishResult = fs.readFileSync(getFixturePath('expected.txt'), 'utf8')
 const plainResult = fs.readFileSync(getFixturePath('expectedPlain.txt'), 'utf8')
@@ -15,7 +15,7 @@ const jsonResult = fs.readFileSync(getFixturePath('expectedJSON.txt'), 'utf8')
 
 const extensions = ['json', 'yml', 'yaml']
 
-test.each(extensions)('compare files and test different formatters (%s)', (ext) => {
+test.each(extensions)('compare files and test different formatters (%s)', ext => {
   const fileBefore = getFixturePath(`file1.${ext}`)
   const fileAfter = getFixturePath(`file2.${ext}`)
 

@@ -15,7 +15,7 @@ const checkData = (data, depth) => {
   return `{${result}\n${countSpace(depth)}}`
 }
 
-const getformattedTree = (node) => {
+const getformattedTree = node => {
   const typeMapping = {
     added: '+ ',
     deleted: '- ',
