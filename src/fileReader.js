@@ -3,9 +3,9 @@ import path from 'node:path'
 import process from 'node:process'
 import parse from './parsers.js'
 
-const getAbsolutePath = (filepath) => path.resolve(process.cwd(), filepath)
+const getAbsolutePath = filepath => path.resolve(process.cwd(), filepath)
 
-const getFileExtension = (filepath) => path.extname(filepath).slice(1)
+const getFileExtension = filepath => path.extname(filepath).slice(1)
 
 const readAndParseFile = (filepath) => {
   const absolutePath = getAbsolutePath(filepath)

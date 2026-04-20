@@ -19,4 +19,4 @@ module.exports = {
     'semi': ['error', 'never'],
     'arrow-parens': ['error', 'always'],
   },
-};
+}

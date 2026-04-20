@@ -10,7 +10,7 @@ const getFileContent = (filepath) => {
   return fs.readFileSync(fullpath, 'utf-8')
 }
 
-const getFileExtname = (filepath) => path.extname(filepath)
+const getFileExtname = filepath => path.extname(filepath)
 
 const gendiff = (filepath1, filepath2, formatName) => {
   const file1 = getFileContent(filepath1)
