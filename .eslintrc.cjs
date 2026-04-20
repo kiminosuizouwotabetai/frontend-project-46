@@ -17,6 +17,6 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'import/prefer-default-export': 'off',
     semi: ['error', 'never'],
-    'arrow-parens': ['error', 'as-needed'],
+    'arrow-parens': ['error', 'always'],
   },
 };
