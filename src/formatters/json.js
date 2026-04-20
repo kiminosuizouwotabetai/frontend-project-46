@@ -1,2 +1,2 @@
-const jsonFormat = (tree) => JSON.stringify(tree);
-export default jsonFormat;
+const jsonFormat = tree => JSON.stringify(tree)
+export default jsonFormat

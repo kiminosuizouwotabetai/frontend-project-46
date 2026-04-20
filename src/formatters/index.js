@@ -1,19 +1,19 @@
-import getFormattedDiff from './stylish.js';
-import plainFormat from './plain.js';
-import jsonFormat from './json.js';
+import getFormattedDiff from './stylish.js'
+import plainFormat from './plain.js'
+import jsonFormat from './json.js'
 
 const chooseFormatter = (tree, formatName) => {
   switch (formatName) {
     case 'plain':
-      return plainFormat(tree);
+      return plainFormat(tree)
     case 'json':
-      return jsonFormat(tree);
+      return jsonFormat(tree)
     case 'stylish':
-      return getFormattedDiff(tree);
+      return getFormattedDiff(tree)
     case undefined:
-      return getFormattedDiff(tree);
+      return getFormattedDiff(tree)
     default:
-      throw new Error(`Unknown format name - ${formatName}`);
+      throw new Error(`Unknown format name - ${formatName}`)
   }
-};
-export default chooseFormatter;
+}
+export default chooseFormatter
